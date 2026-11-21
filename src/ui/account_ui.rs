@@ -3,6 +3,8 @@ use super::{theme::*, VinteriaApp};
 use crate::google_auth as g;
 use egui::{pos2, vec2, Align2, FontId, RichText, Sense, Stroke};
 use std::path::PathBuf;
+#[cfg(target_os = "android")]
+use crate::rfd;
 
 fn size_text(b: u64) -> String {
     if b >= 1 << 20 { format!("{:.1} MB", b as f64 / (1u64 << 20) as f64) } else { format!("{} KB", (b / 1024).max(1)) }

@@ -34,7 +34,7 @@ android-activity = { version = "0.6", features = ["native-activity"] }
 winit = { version = "0.30", default-features = false, features = ["android-native-activity"] }
 
 [package.metadata.android]
-package = "com.synthesia.daw"
+package = "com.winteria.daw"
 build_targets = ["aarch64-linux-android"]
 apk_name = "VinteriaDaw"
 
@@ -49,7 +49,7 @@ name = "android.permission.MANAGE_EXTERNAL_STORAGE"
 
 [package.metadata.android.sdk]
 min_sdk_version = 26
-target_sdk_version = 34
+target_sdk_version = 35
 
 [package.metadata.android.application]
 label = "Vinteria Daw"
