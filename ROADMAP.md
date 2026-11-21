@@ -4,11 +4,10 @@
 
 ## Сейчас
 
-- [ ] **ChatGPT:** запушить исходники 1.0.17 в ветку `winteria-chatgpt` (см. `CHATGPT_HANDOFF.md`).
-- [ ] **Claude:** объединить `winteria-chatgpt` (1.0.17) и `winteria-mobile-pulse` (1.0.19) в общую ветку `winteria`,
-      версия 1.0.20.
+- [x] ChatGPT запушил исходники (1.0.25), всё сведено в `dozyFJ/Vinteria:winteria`.
+- [x] Одна общая ветка `winteria` (1.0.26 = 1.0.25 ChatGPT + фикс шрифтов и Piano Roll от Claude).
 - [ ] Один ключ подписи и один канал OTA для всех сборок.
-- [ ] Починить шрифты в Studio («Aucio», «AUDIC», «MIDI cl»).
+- [ ] Проверить на телефоне фикс шрифтов (highp в vendor/egui_glow, 1.0.26).
 
 ## Интерфейс по размеру экрана
 
