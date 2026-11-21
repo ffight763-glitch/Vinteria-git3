@@ -15,6 +15,7 @@
   - `winteria-chatgpt`: работа ChatGPT.
   - `winteria-mobile-pulse`: работа Claude.
   - Общая линия после объединения будет `winteria`.
+- План работ: `ROADMAP.md` (общий список, отмечайте сделанное).
 - Заметки друг для друга:
   - `CHATGPT_HANDOFF.md`: от Claude для ChatGPT.
   - `CLAUDE_HANDOFF.md`: от ChatGPT для Claude, а также журнал версий в ветке Claude.
