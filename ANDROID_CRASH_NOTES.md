@@ -19,7 +19,10 @@ referenced by .../lib/arm64/libvinteria_daw.so   (NativeActivity.onCreate)
 ## Что сделано в репозитории
 1. `Cargo.toml`: `package = "com.winteria.daw"` (раньше `com.synthesia.daw`), `target_sdk_version = 35` (в SDK нет platform 34, есть 35 и 36).
 2. `src/ui/account_ui.rs`: добавлен `#[cfg(target_os = "android")] use crate::rfd;` (без него Android-сборка не компилировалась: `rfd` на Android это заглушка в `src/lib.rs`).
-3. Сборка и установка проверялись через ADB (см. ниже). Результат проверки дописать сюда.
+3. Release-сборка (`cargo apk build --release`) теперь компилируется, но падает на подписи: нужен `[package.metadata.android.signing.release]` с keystore. Без него собирать `cargo apk build` (debug-подпись, APK в `target/debug/apk/`).
+4. На телефон новая сборка НЕ ставилась и запуск не проверялся: сборку остановили, её сделает пользователь/ChatGPT. Сломанная 1.0.6 остаётся на телефоне.
+
+Репозиторий: https://github.com/ffight763-glitch/Vinteria-git3 (ветка main). Обновления для кнопки Update: `ffight763-glitch/vinteria-updates` (см. `update_url.txt`).
 
 ## Как собирать и ставить
 Переменные окружения: `ANDROID_HOME=C:\Users\ADMIN\Android\Sdk`, `ANDROID_NDK_ROOT=...\ndk\27.2.12479018`.
