@@ -48,3 +48,32 @@ adb logcat -d -b crash
 - Найти исходники 1.0.6 (если они нужны), в этом репозитории их нет.
 - Закоммитить правки (пока ничего не закоммичено).
 - `vinteria_crash.log` (панику при печати в закрытый stderr, os error 232) это отдельная десктопная мелочь, к Android не относится.
+
+## Статус телефона
+Сломанная `com.winteria.daw` 1.0.6 удалена с телефона через `adb uninstall` (2026-11-21). На телефоне остался старый `com.synthesia.daw` (другая сборка, не трогали).
+
+## Промпт для ChatGPT (скопировать целиком)
+
+```
+Ты помогаешь с Rust-проектом Vinteria DAW (egui/eframe, Android через cargo-apk).
+Репозиторий: https://github.com/ffight763-glitch/Vinteria-git3 (ветка main).
+Сначала прочитай ANDROID_CRASH_NOTES.md в корне репозитория.
+
+Контекст: APK com.winteria.daw 1.0.6 падал при запуске на Android 15 (arm64):
+UnsatisfiedLinkError: cannot locate symbol "__cxa_pure_virtual" в libvinteria_daw.so.
+Причина: в .so есть неразрешённые C++ символы и зависимость от libOpenSLES.so, но не слинкован C++ runtime
+(libc++_shared.so нет в NEEDED, статически тоже нет). Исходников 1.0.6 в репозитории нет, там 1.0.0-beta.1
+без звука на Android (заглушка AudioIo в src/audio_engine/device.rs).
+
+Задача:
+1. Дай пошаговую инструкцию (Windows, PowerShell), как собрать debug-APK: cargo apk build
+   (ANDROID_HOME=C:\Users\ADMIN\Android\Sdk, NDK 27.2.12479018; release требует keystore в
+   [package.metadata.android.signing.release]).
+2. Если нужен release: как создать keystore (keytool) и прописать его в Cargo.toml, не коммитя ключ в git.
+3. Как установить: adb install -r target/debug/apk/VinteriaDaw.apk, затем adb logcat -d -b crash
+   и проверить, что приложение запускается.
+4. Если добавляется Android-звук на C++ (oboe/cpal): как слинковать C++ runtime
+   (libc++_shared.so из NDK в APK или -lc++_static) и как проверить через llvm-readelf -d, что
+   в NEEDED есть libc++_shared.so и нет неразрешённых __cxa_* символов.
+Отвечай по-русски, команды давай в отдельных блоках кода.
+```
